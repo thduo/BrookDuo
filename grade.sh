@@ -8,7 +8,7 @@ mkdir grading-area
 git clone $1 student-submission
 echo 'Finished cloning'
 
-if ! [ -f student-submission/ListExamples.java ]
+if ! [ -f student-submission/ListExamples.java ] ;
 then 
     echo "Missing needed files"
     exit 
@@ -20,11 +20,12 @@ cp -r lib grading-area
 
 cd grading-area
 javac -cp $CPATH *.java 
-if [ $? -ne 0 ]
+if [ $? -ne 0 ] ;
 then 
     echo "Compilation Error. Double check your code bugs or syntax"
 fi 
 
+java -cp $CPATH org.junit.runner.JUnitCore TestListExamples 
 
 
 
